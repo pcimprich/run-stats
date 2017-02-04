@@ -8,6 +8,9 @@ const REQUEST_RUNS = 'REQUEST_RUNS';
 const RECEIVE_RUNS_SUCCESS = 'RECEIVE_RUNS_SUCCESS';
 const RECEIVE_RUNS_FAILURE = 'RECEIVE_RUNS_FAILURE';
 const INVALIDATE_RUNS = 'RECEIVE_RUNS_FAILURE';
+const REQUEST_TOTAL = 'REQUEST_TOTAL';
+const RECEIVE_TOTAL_SUCCESS = 'RECEIVE_TOTAL_SUCCESS';
+const RECEIVE_TOTAL_FAILURE = 'RECEIVE_TOTAL_FAILURE';
 
 // action creators
 
@@ -48,16 +51,51 @@ const fetchRuns = () => {
 	}
 }
 
+const requestTotal = () => ({
+    type: REQUEST_TOTAL,
+})
+
+const receiveTotalSuccess = (json) => ({
+    type: RECEIVE_TOTAL_SUCCESS,
+	data: json,
+	receivedAt: Date.now()
+})
+
+const receiveTotalFailure = (error) => ({
+    type: RECEIVE_TOTAL_FAILURE,
+	error: error,
+	receivedAt: Date.now()
+})
+
+const fetchTotal = () => {
+    return (dispatch) => {
+		
+    	dispatch(requestTotal());
+		
+		return fetch(`/api/stats/total`)
+			.then( response => response.json() )
+		  	.then( json => dispatch(receiveTotalSuccess(json)) )
+			.catch( ex => dispatch(receiveTotalSuccess(ex)) );		     
+	}
+}
+
 module.exports = {
 	SET_TABS,
 	REQUEST_RUNS,
 	RECEIVE_RUNS_SUCCESS,
 	RECEIVE_RUNS_FAILURE,
 	INVALIDATE_RUNS,
+	REQUEST_TOTAL,
+	RECEIVE_TOTAL_SUCCESS,
+	RECEIVE_TOTAL_FAILURE,
 	setTabs,
 	requestRuns,
 	receiveRunsSuccess,
 	receiveRunsFailure,
 	invalidateRuns,
-	fetchRuns
+	fetchRuns,
+	requestTotal,
+	receiveTotalSuccess,
+	receiveTotalFailure,
+	fetchTotal
 }

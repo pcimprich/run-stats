@@ -28,7 +28,7 @@ class RunStatsTabActivities extends React.Component {
   	        		</tr>
   		  		</thead>
   		  		<tbody>
-			  		{this.props.runs.items.map((run, index) => {
+			  		{this.props.runs.items.filter((run) => { return 1 }).map((run, index) => {
 						var duration = run.duration.replace(/^00:/, '');
 						duration = duration.replace(/^0/, '');
 						

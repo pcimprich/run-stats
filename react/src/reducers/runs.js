@@ -16,8 +16,7 @@ const reducer = (state = initState, action) => {
   	switch (action.type) {
 		case REQUEST_RUNS:
 			return Object.assign({}, state, {
-				isFetching: true,
-			   	didInvalidate: false
+				isFetching: true
 			})
 		case RECEIVE_RUNS_SUCCESS:
 			return Object.assign({}, state, {
@@ -28,8 +27,7 @@ const reducer = (state = initState, action) => {
 			})
 		case RECEIVE_RUNS_FAILURE:
 			return Object.assign({}, state, {
-				isFetching: false,
-			   	didInvalidate: false
+				isFetching: false
 			})
 		case INVALIDATE_RUNS:
 			return Object.assign({}, state, {

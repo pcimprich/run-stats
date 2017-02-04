@@ -66,7 +66,7 @@ module.exports.getRuns = function(callback, year) {
 		  	callback(rows);
 		});
 	}
-};
+}
 
 /** 
  * @api {get} /runs/:id 2. Get a specific run
@@ -99,7 +99,7 @@ module.exports.getRun = function(callback, id) {
 		console.error(errorMessage);
 		throw new Error(errorMessage);
 	}
-};
+}
 
 /** 
  * api {post} /games 3. Create a new game
@@ -134,5 +134,5 @@ module.exports.createGame = function(callback, game) {
 		console.error(errorMessage);
 		throw new Error(errorMessage);
 	}
-};
+}
 */
