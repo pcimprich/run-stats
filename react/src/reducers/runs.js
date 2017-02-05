@@ -40,8 +40,8 @@ const reducer = (state = initState, action) => {
 			   	filter: action.filter
 			})	
     	default:
-			return state;
-  	  } 
+			return state
+	} 
 }
 
 module.exports.reducer = reducer;
