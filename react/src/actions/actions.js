@@ -11,6 +11,7 @@ const INVALIDATE_RUNS = 'RECEIVE_RUNS_FAILURE';
 const REQUEST_TOTAL = 'REQUEST_TOTAL';
 const RECEIVE_TOTAL_SUCCESS = 'RECEIVE_TOTAL_SUCCESS';
 const RECEIVE_TOTAL_FAILURE = 'RECEIVE_TOTAL_FAILURE';
+const SET_FILTER = 'SET_FILTER';
 
 // action creators
 
@@ -79,6 +80,11 @@ const fetchTotal = () => {
 	}
 }
 
+const setFilter = (key) => ({
+  	type: SET_FILTER,
+  	filter: key
+})
+
 module.exports = {
 	SET_TABS,
 	REQUEST_RUNS,
@@ -88,6 +94,7 @@ module.exports = {
 	REQUEST_TOTAL,
 	RECEIVE_TOTAL_SUCCESS,
 	RECEIVE_TOTAL_FAILURE,
+	SET_FILTER,
 	setTabs,
 	requestRuns,
 	receiveRunsSuccess,
@@ -97,5 +104,6 @@ module.exports = {
 	requestTotal,
 	receiveTotalSuccess,
 	receiveTotalFailure,
-	fetchTotal
+	fetchTotal,
+	setFilter
 }

@@ -1,8 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var connect = require('react-redux').connect;
-var Tabs = require('react-bootstrap').Tabs;
-var Tab = require('react-bootstrap').Tab;
+var {Tabs, Tab} = require('react-bootstrap');
 var RunStatsTabActivities = require('./RunStatsTabActivities').Component;
 var RunStatsTabStatistics = require('./RunStatsTabStatistics').Component;
 var setTabs = require('../actions/actions').setTabs;

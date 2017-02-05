@@ -12,6 +12,10 @@ div.pane {
 	border-radius: 5px;
 }
 
+div.tabContent {
+	padding: 15px 0px;
+}
+
 td.right, th.right {
 	text-align: right;
 }

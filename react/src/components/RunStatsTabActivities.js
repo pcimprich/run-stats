@@ -1,6 +1,7 @@
 var React = require('react');
 var connect = require('react-redux').connect;
 var fetchRuns = require('../actions/actions').fetchRuns;
+var RunStatsTabActivitiesFilter = require('./RunStatsTabActivitiesFilter').Component;
 
 class RunStatsTabActivities extends React.Component {
 	constructor(props) {
@@ -14,6 +15,8 @@ class RunStatsTabActivities extends React.Component {
  	render() {
 
 		return (
+		<div className="tabContent">
+			<RunStatsTabActivitiesFilter runs={this.props.runs} dispatch={this.props.dispatch}/>
         	<table className="table table-striped">
   		  		<thead>
   	        		<tr>
@@ -54,6 +57,7 @@ class RunStatsTabActivities extends React.Component {
 		 	  )}
 			</tbody>
   		  </table>
+		</div>
 		);
 	}
 }
