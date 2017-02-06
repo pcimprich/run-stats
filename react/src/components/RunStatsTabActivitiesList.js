@@ -1,25 +1,7 @@
 var React = require('react');
+var runFilter = require('../utils/filters').runFilter;
 
 const RunStatsTabActivitiesList = (props) => {
-		
-	const runFilter = (run) => {
-		switch (props.runs.filter) {
-			case 'yr:2017':
-				return run.year == 2017 ? 1 : 0
-			case 'yr:2016':
-				return run.year == 2016 ? 1 : 0
-			case 'yr:2015':
-				return run.year == 2015 ? 1 : 0
-			case 'yr:2014':
-				return run.year == 2014 ? 1 : 0
-			case 'km:10':
-				return run.distance >= 10 ? 1 : 0
-			case 'km:15':
-				return run.distance >= 15 ? 1 : 0
-			default:
-				return 1
-		}
-	}
 
 	return (
         <table className="table table-striped">
@@ -36,7 +18,7 @@ const RunStatsTabActivitiesList = (props) => {
   	        	</tr>
   		  	</thead>
   		  	<tbody>
-			  	{props.runs.items.filter((run) => runFilter(run)).map((run, index) => {
+			  	{props.runs.items.filter((run) => runFilter(run, props.runs.filter.key)).map((run, index) => {
 					var duration = run.duration.replace(/^00:/, '');
 					duration = duration.replace(/^0/, '');
 						

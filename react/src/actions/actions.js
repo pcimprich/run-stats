@@ -82,7 +82,7 @@ const fetchTotal = () => {
 
 const setFilter = (key) => ({
   	type: SET_FILTER,
-  	filter: key
+  	key: key
 })
 
 module.exports = {

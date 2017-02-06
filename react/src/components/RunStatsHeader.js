@@ -16,7 +16,7 @@ class RunStatsHeader extends React.Component {
 		
 		return (
 			<div className="pull-right bg-primary pane">
-				<i>{data.count} activities, {data.distance} km</i>
+				{data.count} activities, {data.distance} km
 			</div>
 		);
 	}

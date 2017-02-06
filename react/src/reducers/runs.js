@@ -1,5 +1,7 @@
 "use strict";
 
+var runFilter = require('../utils/filters').runFilter;
+
 const REQUEST_RUNS = require('../actions/actions').REQUEST_RUNS;
 const RECEIVE_RUNS_SUCCESS = require('../actions/actions').RECEIVE_RUNS_SUCCESS;
 const RECEIVE_RUNS_FAILURE = require('../actions/actions').RECEIVE_RUNS_FAILURE;
@@ -10,7 +12,7 @@ const initState = {
   	isFetching: false,
   	didInvalidate: false,
   	items: [],
-	filter: 'yr:2016'
+	filter: {key: 'yr:2016'}
 }
 
 const reducer = (state = initState, action) => {
@@ -25,7 +27,10 @@ const reducer = (state = initState, action) => {
 				isFetching: false,
 			   	didInvalidate: false,
 				lastUpdated: action.receivedAt,
-				items: action.items
+				items: action.items,
+				filter: Object.assign({}, state.filter, {
+					count: action.items.filter((run) => runFilter(run, state.filter.key)).length
+				})
 			})
 		case RECEIVE_RUNS_FAILURE:
 			return Object.assign({}, state, {
@@ -37,8 +42,11 @@ const reducer = (state = initState, action) => {
 			})	
 		case SET_FILTER:
 			return Object.assign({}, state, {
-			   	filter: action.filter
-			})	
+			   	filter: {
+					key: action.key,
+					count: state.items.filter((run) => runFilter(run, action.key)).length
+				}
+			})
     	default:
 			return state
 	} 

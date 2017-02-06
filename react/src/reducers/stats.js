@@ -1,8 +1,6 @@
 "use strict";
 
-const REQUEST_TOTAL = require('../actions/actions').REQUEST_TOTAL;
-const RECEIVE_TOTAL_SUCCESS = require('../actions/actions').RECEIVE_TOTAL_SUCCESS;
-const RECEIVE_TOTAL_FAILURE = require('../actions/actions').RECEIVE_TOTAL_FAILURE;
+const {REQUEST_TOTAL, RECEIVE_TOTAL_SUCCESS, RECEIVE_TOTAL_FAILURE} = require('../actions/actions');
 
 const initState = { 
 	total: {
