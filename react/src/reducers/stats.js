@@ -1,6 +1,7 @@
 "use strict";
 
-const {REQUEST_TOTAL, RECEIVE_TOTAL_SUCCESS, RECEIVE_TOTAL_FAILURE} = require('../actions/actions');
+const {REQUEST_TOTAL, RECEIVE_TOTAL_SUCCESS, 
+		RECEIVE_TOTAL_FAILURE} = require('../actions/actions');
 
 const initState = { 
 	total: {

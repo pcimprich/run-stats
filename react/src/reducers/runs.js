@@ -2,11 +2,8 @@
 
 var runFilter = require('../utils/filters').runFilter;
 
-const REQUEST_RUNS = require('../actions/actions').REQUEST_RUNS;
-const RECEIVE_RUNS_SUCCESS = require('../actions/actions').RECEIVE_RUNS_SUCCESS;
-const RECEIVE_RUNS_FAILURE = require('../actions/actions').RECEIVE_RUNS_FAILURE;
-const INVALIDATE_RUNS = require('../actions/actions').INVALIDATE_RUNS;
-const SET_FILTER = require('../actions/actions').SET_FILTER;
+const {REQUEST_RUNS, RECEIVE_RUNS_SUCCESS, 
+		RECEIVE_RUNS_FAILURE, INVALIDATE_RUNS, SET_FILTER} = require('../actions/actions');
 
 const initState = {
   	isFetching: false,
