@@ -24,9 +24,9 @@ module.exports = function(grunt) {
 		  cmd: 'npm',
 		  args: ['run', 'bundle-js']
 		},
-		testNodeApi: {
+		testApi: {
 		  cmd: 'npm',
-		  args: ['run', 'test-node']
+		  args: ['run', 'test-api']
 		},
 		testReducers: {
 		  cmd: 'npm',
@@ -44,6 +44,6 @@ module.exports = function(grunt) {
   // Default task(s).
   grunt.registerTask('default', ['build']);
   grunt.registerTask('build', ['run:compileJsx', 'run:bundleJs']);
-  grunt.registerTask('test', ['run:testReducers']);
+  grunt.registerTask('test', ['run:testApi', 'run:testReducers']);
 
 };

@@ -6,6 +6,7 @@ var pool = require('./db');
  * @apiSuccess (Total DTO) {Number} distance Total distance [km] of all runs run.
  * @apiSuccess (Total DTO) {String} duration Total duration [s] of all runs.
  * @apiSuccess (Total DTO) {Number} elevation Total elevation [m] gained during all runs.
+ * @apiSuccess (Total DTO) {Number} maxDistance Maximum distance [km] achieved for single run.
  */
 
 /** 
@@ -20,7 +21,7 @@ var pool = require('./db');
 module.exports.getTotal = function(callback) {
 	
 	pool.query('SELECT count(*) AS count, ROUND(SUM(distance)) AS distance, SUM(duration) AS duration, ' + 
-					'SUM(elevation) AS elevation FROM run',
+					'SUM(elevation) AS elevation, MAX(distance) AS maxDistance FROM run',
 				function(err, rows) {
 					if (err) {
 			  		  console.error('error connecting: ' + err.stack);
