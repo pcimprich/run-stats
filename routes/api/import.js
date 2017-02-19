@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 	
 	model.importGarmin(function(count){
 		res.send(count);	
-	});
+	}, req.query.test);
 });
 
 module.exports = router;

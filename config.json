@@ -1,3 +1,4 @@
 {
-	"garminCsvFile": "data/Activities.csv" 
+	"garminCsvFile": "data/Activities.csv",
+	"garminTestCsvFile": "data/TestActivities.csv"
 }

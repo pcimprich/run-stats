@@ -67,9 +67,11 @@ const checkCountSql = (csv) => {
 	return sql;
 }
 
-const importGarmin = (callback) => {
+const importGarmin = (callback, test) => {
 	
-	fs.readFile(config.garminCsvFile, 'utf8', (err,data) => {
+	var cvsFile = test ? config.garminTestCsvFile : config.garminCsvFile;
+	
+	fs.readFile(cvsFile, 'utf8', (err,data) => {
 	  if (err) return console.error('error opening file', err.stack);
 	  
 	  parse(data, {relax_column_count: true, skip_lines_with_empty_values: true}, 
@@ -88,7 +90,8 @@ const importGarmin = (callback) => {
 				callback({newActivities: filteredCsv.length - rows[0].count});
 			});
 			
-			for (line of filteredCsv) processActivity(line);
+			// new activities inserted if not in TEST mode
+			if (!test) for (line of filteredCsv) processActivity(line);
 	  	})
 	});
 }
@@ -97,6 +100,6 @@ const callback = (count) => {
 	console.log('FINAL: ', count);
 }
 
-importGarmin(callback);
+importGarmin(callback, 1);
 */
 module.exports.importGarmin = importGarmin;
