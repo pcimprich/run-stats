@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "test-reducers": "jasmine-node react/src/reducers",
-	 "test-api": "jasmine-node services",
+    "test-api": "jasmine-node services",
     "apidoc": "apidoc -i services/ -o apidoc",
     "compile-jsx": "babel react/src --out-dir react/lib/ --ignore spec.js,test.js",
     "bundle-js": "browserify react/lib/index.js -d > public/javascripts/run-stats-bundle.js"
@@ -13,6 +13,7 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
+    "csv-parse": "^1.2.0",
     "debug": "^2.2.0",
     "deep-freeze": "0.0.1",
     "es6-promise": "^4.0.5",

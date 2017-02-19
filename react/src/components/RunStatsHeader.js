@@ -15,8 +15,15 @@ class RunStatsHeader extends React.Component {
 		const data = this.props.total.data;
 		
 		return (
-			<div className="pull-right bg-primary pane">
-				{data.count} activities, {data.distance} km
+			<div>
+				<div className="pull-right controls">
+					<button className="btn btn-default btn-sm" type="button">
+						<i className="fa fa-upload fa-lg" aria-hidden="true"></i>
+					</button>
+				</div>
+				<div className="bg-primary pane pull-right">
+					{data.count} activities, {data.distance} km
+				</div>
 			</div>
 		);
 	}
