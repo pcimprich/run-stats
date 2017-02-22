@@ -42,7 +42,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   // Default task(s).
-  grunt.registerTask('default', ['build']);
+  grunt.registerTask('default', ['all']);
+  grunt.registerTask('all', ['test', 'build']);
   grunt.registerTask('build', ['run:compileJsx', 'run:bundleJs']);
   grunt.registerTask('test', ['run:testApi', 'run:testReducers']);
 

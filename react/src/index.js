@@ -1,7 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var createStore = require('redux').createStore;
-var applyMiddleware = require('redux').applyMiddleware;
+var {createStore, applyMiddleware} = require('redux');
 var createLogger = require('redux-logger');
 var thunkMiddleware = require('redux-thunk').default;
 var Provider = require('react-redux').Provider;

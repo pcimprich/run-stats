@@ -10,13 +10,15 @@ const insertActivity = (act) => {
 	var date = [dt[3], monthNumber(dt[2]), dt[1]].join('-');
 		
 	var tm = dt[4].split(':');
-	var time = dt[5] == 'PM' ? (Number.parseInt(tm[0]) + 12).toString() + ':' + tm[1] : dt[4];
+	var time = dt[5] == 'PM' ? (Number.parseInt(tm[0], 10) + 12).toString() + ':' + tm[1] : dt[4];
 		
 	var duration = act[5].length > 5 ? act[5] : '0:' + act[5];
 	var pace = '0:' + act[6];
 	var loc = act[1].replace(/\sRunning/, '');
-	var kcal =  Number.parseInt(act[11]);
-	var steps =  Number.parseInt(act[11]);
+	var kcal =  Number.parseInt(act[11].replace(/,/, ''), 10);
+	var steps =  Number.parseInt(act[10].replace(/,/, ''), 10);
+	
+	console.log('>>>', loc);
 		
 	pool.query("INSERT INTO run (date, time, distance, duration, pace, kcal, elevation, cadence, steps, location, source) " + 
 		"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
@@ -87,6 +89,7 @@ const importGarmin = (callback, test) => {
 					console.error('error connecting: ' + err.stack);
   					throw err;
 				}
+				
 				callback({newActivities: filteredCsv.length - rows[0].count});
 			});
 			

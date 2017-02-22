@@ -12,6 +12,11 @@ const REQUEST_TOTAL = 'REQUEST_TOTAL';
 const RECEIVE_TOTAL_SUCCESS = 'RECEIVE_TOTAL_SUCCESS';
 const RECEIVE_TOTAL_FAILURE = 'RECEIVE_TOTAL_FAILURE';
 const SET_FILTER = 'SET_FILTER';
+const REQUEST_IMPORT = 'REQUEST_IMPORT';
+const RECEIVE_IMPORT_SUCCESS = 'RECEIVE_IMPORT_SUCCESS';
+const RECEIVE_IMPORT_FAILURE = 'RECEIVE_IMPORT_FAILURE';
+const OPEN_IMPORT_MODAL = 'OPEN_IMPORT_MODAL';
+const CLOSE_IMPORT_MODAL = 'CLOSE_IMPORT_MODAL';
 
 // action creators
 
@@ -85,6 +90,42 @@ const setFilter = (key) => ({
   	key: key
 })
 
+const requestImport = () => ({
+    type: REQUEST_IMPORT,
+})
+
+const receiveImportSuccess = (json) => ({
+    type: RECEIVE_IMPORT_SUCCESS,
+	newActivities: json.newActivities,
+	receivedAt: Date.now()
+})
+
+const receiveImportFailure = (error) => ({
+    type: RECEIVE_IMPORT_FAILURE,
+	error: error,
+	receivedAt: Date.now()
+})
+
+const runImport = () => {
+    return (dispatch) => {
+		
+    	dispatch(requestImport());
+		
+		return fetch(`/api/import`)
+			.then( response => response.json() )
+		  	.then( json => dispatch(receiveImportSuccess(json)) )
+			.catch( ex => dispatch(receiveImportSuccess(ex)) );		     
+	}
+}
+
+const openImportModal = () => ({
+    type: OPEN_IMPORT_MODAL,
+})
+
+const closeImportModal = () => ({
+    type: CLOSE_IMPORT_MODAL,
+})
+
 module.exports = {
 	SET_TABS,
 	REQUEST_RUNS,
@@ -95,6 +136,11 @@ module.exports = {
 	RECEIVE_TOTAL_SUCCESS,
 	RECEIVE_TOTAL_FAILURE,
 	SET_FILTER,
+	REQUEST_IMPORT,
+	RECEIVE_IMPORT_SUCCESS,
+	RECEIVE_IMPORT_FAILURE,
+	OPEN_IMPORT_MODAL,
+	CLOSE_IMPORT_MODAL,
 	setTabs,
 	requestRuns,
 	receiveRunsSuccess,
@@ -105,5 +151,11 @@ module.exports = {
 	receiveTotalSuccess,
 	receiveTotalFailure,
 	fetchTotal,
-	setFilter
+	setFilter,
+	requestImport,
+	receiveImportSuccess,
+	receiveImportFailure,
+	runImport,
+	openImportModal,
+	closeImportModal
 }

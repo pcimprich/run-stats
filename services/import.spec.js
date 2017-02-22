@@ -13,7 +13,7 @@ describe("run-stats API - import", function() {
 				
 				//DTO fields
 				var count = JSON.parse(body);
-				expect(count.newActivities).toBe(14);
+				expect(count.newActivities).toBe(13);
 				done();
 			});
 		});

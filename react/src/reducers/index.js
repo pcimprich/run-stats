@@ -13,7 +13,10 @@
 			{ id: 2, date: "2016-12-22", year: 2016, ... }
 			...
       	  ],
-    	}
+		isImporting: false,
+		lastImported: 1239478406530,
+		newActivities: 0,
+		showImportModal: false
 	}
 	stats: {
 		total: {

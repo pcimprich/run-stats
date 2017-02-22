@@ -30,7 +30,7 @@ const RunStatsTabActivitiesList = (props) => {
 						
 					return (
 						<tr key={run.id}>
-			      	  		<td><i className="material-icons">directions_run</i> Run</td>
+			      	  		<td><i className="material-icons">directions_run</i> {run.location}</td>
 							<td className="right">{run.date}</td>
 			      	  		<td className="right">{run.distance} km</td>
 			      	  		<td className="right">{duration}</td>

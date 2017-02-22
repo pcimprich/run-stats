@@ -8,15 +8,32 @@ var {requestTotal, receiveTotalSuccess} = require('../actions/actions');
 describe("testing STATS reducer", function() {
 	
 	const data = {count:411, distance:2674, duration:1749748, elevation:36006};
+	
+	const currentDate = Date.now();
+	
+	const initState = { 
+		total: {
+	  		isFetching: false,
+	  		data: {}
+		}
+	}
+	
+	const state1 = { 
+		total: {
+	  		isFetching: true,
+	  		data: {}
+		}
+	}
+	
+	const state2 = { 
+		total: {
+	  		isFetching: false,
+			data: data,
+			lastUpdated: currentDate
+		}
+	}
 		
 	it("it should return the initial state", () => {
-		
-		const initState = { 
-			total: {
-		  		isFetching: false,
-		  		data: {}
-			}
-		}
 		
 		deepFreeze(initState);
 		
@@ -24,71 +41,33 @@ describe("testing STATS reducer", function() {
 	})
 			
 	it("it should handle REQUEST_TOTAL action", () => {
-							
-		const stateBefore = { 
-			total: {
-		  		isFetching: false,
-		  		data: {}
-			}
-		}
-	
-		const action = requestTotal();
-	
-		const stateAfter = { 
-			total: {
-		  		isFetching: true,
-		  		data: {}
-			}
-		}
 
-  		deepFreeze(stateBefore);
-  		deepFreeze(action);
+  		deepFreeze(initState);
+  		deepFreeze(requestTotal());
 	
-		expect(JSON.stringify(reducer(stateBefore, action))).toEqual(JSON.stringify(stateAfter));
+		expect(JSON.stringify(reducer(initState, requestTotal()))).toEqual(JSON.stringify(state1));
 	})
 	
 	it("it should handle RECEIVE_TOTAL_SUCCESS action", () => {
-							
-		const stateBefore = { 
-			total: {
-		  		isFetching: true,
-		  		data: {}
-			}
-		}
-	
-		const action = receiveTotalSuccess(data);
-	
-		const stateAfter = { 
-			total: {
-		  		isFetching: false,
-				data: data,
-				lastUpdated: Date.now()
-			}
-		}
 
-  		deepFreeze(stateBefore);
-  		deepFreeze(action);
+  		deepFreeze(state1);
+  		deepFreeze(receiveTotalSuccess(data));
+		
+		var newState = reducer(state1, receiveTotalSuccess(data));
+		newState.total.lastUpdated = currentDate;
 	
-		expect(JSON.stringify(reducer(stateBefore, action))).toEqual(JSON.stringify(stateAfter));
+		expect(JSON.stringify(newState)).toEqual(JSON.stringify(state2));
 	})
 	
 	it("it should handle unknown action", () => {
-		
-		const stateBefore = { 
-			total: {
-		  		isFetching: false,
-				data: data,
-				lastUpdated: Date.now()
-			}
-		}
 	
 		const action = {
 	    	type: 'UNKNOWN_ACTION'
 		};
 
-  		deepFreeze(stateBefore);
+  		deepFreeze(state2);
   		deepFreeze(action);
 	
-		expect(reducer(stateBefore, action)).toEqual(stateBefore);
+		expect(reducer(state2, action)).toEqual(state2);
 	})
 })
