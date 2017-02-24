@@ -1,3 +1,5 @@
+// Function to filter the list of runs
+
 const runFilter = (run, filter) => {
 	const [type, value] = filter.split(':',2);
 	
