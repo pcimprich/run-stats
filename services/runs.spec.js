@@ -15,7 +15,9 @@ describe("run-stats API - runs", function() {
 				var run = JSON.parse(body);
 				expect(run[0].id).toBeDefined();
 				expect(run[0].date).toBeDefined();
-				expect(run[1].year).toBeDefined();
+				expect(run[1].year).toBeGreaterThan(0);
+				expect(run[1].month).toBeGreaterThan(0);
+				expect(run[1].week).toBeGreaterThan(0);
 				expect(run[1].time).toBeDefined();
 				expect(run[5].distance).toBeGreaterThan(0);
 				expect(run[5].duration).toBeDefined();
@@ -53,7 +55,9 @@ describe("run-stats API - runs", function() {
 				var run = JSON.parse(body);
 				expect(run.id).toBeDefined();
 				expect(run.date).toBeDefined();
-				expect(run.year).toBeDefined();
+				expect(run.year).toBeGreaterThan(0);
+				expect(run.month).toBeGreaterThan(0);
+				expect(run.week).toBeGreaterThan(0);
 				expect(run.time).toBeDefined();
 				expect(run.distance).toBeGreaterThan(0);
 				expect(run.duration).toBeDefined();

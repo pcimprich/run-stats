@@ -17,8 +17,6 @@ const insertActivity = (act) => {
 	var loc = act[1].replace(/\sRunning/, '');
 	var kcal =  Number.parseInt(act[11].replace(/,/, ''), 10);
 	var steps =  Number.parseInt(act[10].replace(/,/, ''), 10);
-	
-	console.log('>>>', loc);
 		
 	pool.query("INSERT INTO run (date, time, distance, duration, pace, kcal, elevation, cadence, steps, location, source) " + 
 		"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 

@@ -1,5 +1,8 @@
 var pool = require('./db');
 
+const columns = "id, DATE_FORMAT(date, '%Y/%m/%d') AS date, YEAR(date) as year, MONTH(date) as month, " +
+	"WEEK(date,3) as week, time, distance, duration, pace, kcal, elevation, cadence, steps, location, source, notes ";
+
 /**
  * @apiDefine RunDTO
  * @apiSuccess (Run DTO) {String} id ID of the run.
@@ -18,8 +21,10 @@ var pool = require('./db');
  */
 
 /**
- * @apiDefine GameDTOGet
+ * @apiDefine RunDTOGet
  * @apiSuccess (Run DTO) {String} year Year of the date of the run: yyyy.
+ * @apiSuccess (Run DTO) {String} month Month number of the date of the run: 1-12.
+ * @apiSuccess (Run DTO) {String} week Week number of the date of the run: 1-53.
  */
 
 /** 
@@ -35,9 +40,6 @@ var pool = require('./db');
  * @apiUse RunDTOGet
  */
 module.exports.getRuns = function(callback, year) {
-	
-	const columns = "id, DATE_FORMAT(date, '%Y/%m/%d') AS date, YEAR(date) as year, time, distance, " + 
-		"duration, pace, kcal, elevation, cadence, steps, location, source, notes ";
 	
 	// all games for a competition
 	if (year) {
@@ -83,7 +85,7 @@ module.exports.getRuns = function(callback, year) {
 module.exports.getRun = function(callback, id) {
 	
 	if (id) {
-		pool.query('SELECT *, YEAR(date) as year ' + 
+		pool.query('SELECT ' + columns + 
 					'FROM run ' + 
 					'WHERE id = ?', 
 					[id], function(err, rows) {
@@ -100,39 +102,3 @@ module.exports.getRun = function(callback, id) {
 		throw new Error(errorMessage);
 	}
 }
-
-/** 
- * api {post} /games 3. Create a new game
- * apiVersion 1.0.0
- * apiName createGame
- * apiGroup Games
- *
- * apiSuccess (Request) {JSON} body A <code>Game DTO</code> object.
- * apiUse GameDTO
- */
-/*
-module.exports.createGame = function(callback, game) {
-	
-	if (game) {
-		var forfeit = game.forfeit ? game.forfeit : 0;	
-		
-		pool.query("INSERT INTO game (date, competition, team_a, team_b, full_a, full_b, round, forfeit) " + 
-					"VALUES (CURDATE(), ?, ?, ?, ?, ?, ?, ?)", 
-					[game.competition, game.team_a, game.team_b, game.full_a, game.full_b, game.round, forfeit], 
-		
-		function(err, result) {
-			if (err) {
-			  	console.error('error connecting: ' + err.stack);
-			  	throw err;
-		  	}
-		  	callback(result);
-			console.log('[createGame] Insert ID: ' + result.insertId)
-		});
-		
-	} else {
-		var errorMessage = 'getGame: Mandatory `new game` body missing'
-		console.error(errorMessage);
-		throw new Error(errorMessage);
-	}
-}
-*/
