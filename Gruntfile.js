@@ -31,6 +31,10 @@ module.exports = function(grunt) {
 		testReducers: {
 		  cmd: 'npm',
 		  args: ['run', 'test-reducers']
+		},
+		apiDoc: {
+		  cmd: 'npm',
+		  args: ['run', 'apidoc']
 		}
 	  }
   });
@@ -43,8 +47,9 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask('default', ['all']);
-  grunt.registerTask('all', ['test', 'build']);
+  grunt.registerTask('all', ['test', 'build', 'apidoc']);
   grunt.registerTask('build', ['run:compileJsx', 'run:bundleJs']);
   grunt.registerTask('test', ['run:testApi', 'run:testReducers']);
+  grunt.registerTask('apidoc', ['run:apiDoc']);
 
 };

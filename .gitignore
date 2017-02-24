@@ -15,6 +15,9 @@ pids
 react/lib
 public/javascripts/run-stats-bundle.js
 
+# Generated documentation
+apidoc
+
 # Mac helpers
 .DS_Store
 
