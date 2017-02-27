@@ -2,7 +2,7 @@
 
 const SET_TABS = require('../actions/actions').SET_TABS;
 
-const reducer = (state = 'act', action) => {
+const reducer = (state = 'dsh', action) => {
 
   	switch (action.type) {
 		case SET_TABS:

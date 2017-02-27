@@ -12,6 +12,13 @@ div.pane {
 	border-radius: 5px;
 }
 
+.ring {
+	padding: 10px;
+	border-radius: 26px;
+	color: black;
+	background-color: #f0ad4e;
+}
+
 div.controls {
 	padding: 0px 5px;
 }
@@ -22,4 +29,16 @@ div.tabContent {
 
 td.right, th.right {
 	text-align: right;
+}
+
+.large {
+	font-size: large;
+}
+
+.indent-top {
+	margin-top: 5px;
+}
+
+.indent-top2 {
+	margin-top: 15px;
 }

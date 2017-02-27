@@ -1,6 +1,7 @@
 "use strict";
 
 var runFilter = require('../utils/filters').runFilter;
+var {groupRunsByWeek, groupRunsByMonth, groupRunsByYear}  = require('../utils/grouping');
 
 const {REQUEST_RUNS, RECEIVE_RUNS_SUCCESS, RECEIVE_RUNS_FAILURE, INVALIDATE_RUNS, 
 	SET_FILTER, REQUEST_IMPORT, RECEIVE_IMPORT_SUCCESS, RECEIVE_IMPORT_FAILURE, 
@@ -11,6 +12,9 @@ const initState = {
   	didInvalidate: false,
   	items: [],
 	filter: {key: 'yr:2017'},
+	groupedByWeek: {},
+	groupedByMonth: {},
+	groupedByYear: {},
 	isImporting: false,
 	newActivities: 0,
 	showImportModal: false
@@ -31,7 +35,10 @@ const reducer = (state = initState, action) => {
 				items: action.items,
 				filter: Object.assign({}, state.filter, {
 					count: action.items.filter((run) => runFilter(run, state.filter.key)).length
-				})
+				}),
+				groupedByWeek: groupRunsByWeek(action.items),
+				groupedByMonth: groupRunsByMonth(action.items),
+				groupedByYear: groupRunsByYear(action.items)
 			})
 		case RECEIVE_RUNS_FAILURE:
 			return Object.assign({}, state, {

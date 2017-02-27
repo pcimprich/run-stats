@@ -9,10 +9,6 @@ class RunStatsTabActivities extends React.Component {
     	super(props);
   	}
 	
-	componentDidMount() {
-		this.props.dispatch(fetchRuns());
-	}
-	
  	render() {
 		return (
 			<div className="tabContent">

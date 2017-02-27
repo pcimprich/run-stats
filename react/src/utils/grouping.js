@@ -24,7 +24,8 @@ const _processItem = (acc, key, run) => {
 	
 	if (acc[key]) {
 		acc[key].count++;
-		acc[key].distance += Math.round(run.distance);
+		acc[key].distance += run.distance;
+		if (run.distance > acc[key].maxDistance) acc[key].maxDistance = run.distance;
 		acc[key].duration += _hmsToSec(run.duration);
 		acc[key].kcal += run.kcal;
 		acc[key].elevation += run.elevation;
@@ -32,11 +33,20 @@ const _processItem = (acc, key, run) => {
 	} else {
 		acc[key] = {
 			count: 1, 
-			distance: Math.round(run.distance),
+			distance: run.distance,
+			maxDistance: run.distance,
 			duration: _hmsToSec(run.duration),
 			kcal: run.kcal,
 			elevation: run.elevation
 		}
+	}
+}
+
+const _postProcess = (acc) => {
+	for (item in acc) {
+		acc[item].duration = _secToHms(acc[item].duration);
+		acc[item].distance = Math.round(acc[item].distance);
+		acc[item].maxDistance = Math.round(acc[item].maxDistance * 10) / 10;
 	}
 }
 
@@ -48,8 +58,7 @@ const groupRunsByYear = (runs) => {
 	for (var i = 0; i < runs.length; i++)
 		_processItem(acc, runs[i].year, runs[i]);
 	
-	for (item in acc) 
-		acc[item].duration = _secToHms(acc[item].duration);
+	_postProcess(acc);
 	
 	return acc;
 }
@@ -60,8 +69,7 @@ const groupRunsByMonth = (runs) => {
 	for (var i = 0; i < runs.length; i++)
 		_processItem(acc, runs[i].year + 'm' + runs[i].month, runs[i]);
 	
-	for (item in acc) 
-		acc[item].duration = _secToHms(acc[item].duration);
+	_postProcess(acc);
 	
 	return acc;
 }
@@ -72,8 +80,7 @@ const groupRunsByWeek = (runs) => {
 	for (var i = 0; i < runs.length; i++)
 		_processItem(acc, runs[i].year + 'w' + runs[i].week, runs[i]);
 	
-	for (item in acc) 
-		acc[item].duration = _secToHms(acc[item].duration);
+	_postProcess(acc);
 	
 	return acc;
 }

@@ -1,4 +1,6 @@
 {
+	"goalWeekly": 25,
+	"goalMonthly": 100,
 	"garminCsvFile": "data/Activities.csv",
 	"garminTestCsvFile": "data/TestActivities.csv"
 }

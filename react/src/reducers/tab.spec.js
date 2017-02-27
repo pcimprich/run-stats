@@ -9,7 +9,7 @@ describe("testing TAB reducer", function() {
 		
 	it("it should return the initial state", () => {
 		
-		const initState = 'act';
+		const initState = 'dsh';
 		
 		deepFreeze(initState);
 		
@@ -18,7 +18,7 @@ describe("testing TAB reducer", function() {
 			
 	it("it should handle SET_TABS action", () => {
 							
-		const stateBefore = 'act';
+		const stateBefore = 'dsh';
 	
 		const action = setTabs('sta');
 	

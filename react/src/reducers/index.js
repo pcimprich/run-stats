@@ -12,7 +12,11 @@
         	{ id: 1, date: "2016-12-31", year: 2016, ... },
 			{ id: 2, date: "2016-12-22", year: 2016, ... }
 			...
-      	  ],
+      	],
+		groupedByWeek: {
+			2017w15: { count: 12, distance: 35, duration: '4:50:49', kcal: 7023, elevation: 957 },
+	 		...
+		}
 		isImporting: false,
 		lastImported: 1239478406530,
 		newActivities: 0,

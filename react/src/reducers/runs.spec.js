@@ -11,8 +11,10 @@ describe("testing RUNS reducer", function() {
 	// Test data
 	
 	const data = [
-		{id: 1, date: "2016/12/31", year: 2017, distance :8.35},
-		{id: 2, date: "2016/12/30", year: 2017, distance :10.27}
+		{cadence:78, date:"2017/02/27", distance:7.17, duration:"00:41:05", elevation:140, id:412, kcal:691, location:"Radošovice", month:2, 
+		notes:null, pace:"00:05:44", source:"Garmin", steps:6404, time:"24:25:00", week:9, year:2017},
+		{cadence:78, date:"2017/02/24", distance:10.59, duration:"00:40:03", elevation:116, id:413, kcal:641, location:"Radošovice", month:2, 
+		notes:null, pace:"00:06:05", source:"Garmin", steps:6242, time:"11:58:00", week:8, year:2017}
 	];
 	const currentDate = Date.now();
 	
@@ -21,6 +23,9 @@ describe("testing RUNS reducer", function() {
 	  	didInvalidate: false,
 	  	items: [],
 		filter: {key: 'yr:2017'},
+		groupedByWeek: {},
+		groupedByMonth: {}, 
+		groupedByYear: {},
 		isImporting: false,
 		newActivities: 0,
 		showImportModal :false
@@ -33,6 +38,16 @@ describe("testing RUNS reducer", function() {
 	  	didInvalidate: false,
 	  	items: data,
 		filter: {key: 'yr:2017', count: 2},
+		groupedByWeek: {
+			'2017w9': {"count":1,"distance":7,"maxDistance":7.2,"duration":"00:41:05","kcal":691,"elevation":140},
+			'2017w8': {"count":1,"distance":11,"maxDistance":10.6,"duration":"00:40:03","kcal":641,"elevation":116}
+		},
+		groupedByMonth: {'2017m2': 
+			{"count":2,"distance":18,"maxDistance":10.6,"duration":"01:21:08","kcal":1332,"elevation":256}
+		}, 
+		groupedByYear: {
+			'2017': {"count":2,"distance":18,"maxDistance":10.6,"duration":"01:21:08","kcal":1332,"elevation":256}
+		},
 		isImporting: false,
 		newActivities: 0,
 		showImportModal :false,
