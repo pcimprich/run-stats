@@ -2,13 +2,14 @@ var React = require('react');
 var moment = require('moment');
 var RunStatsTabDashboardPiechart = require('./RunStatsTabDashboardPiechart').Component;
 var RunStatsTabDashboardValues = require('./RunStatsTabDashboardValues').Component;
+var RunStatsTabDashboardBars = require('./RunStatsTabDashboardBars').Component;
 var conf = require('../../../config.json');
-var {currentPeriodValues} = require('../utils/auxiliary.js');
+var {currentPeriodValues, recentKeysM} = require('../utils/auxiliary.js');
 
 const RunStatsTabDashboardMonth = (props) => {
 	
-	const current = moment().year() + 'm' + (moment().month()+1);
-	const val = currentPeriodValues(props.month, current);
+	const keys = recentKeysM(10);
+	const val = currentPeriodValues(props.month, keys[0]);
 	const ratio = 100 * val.distance / conf.goalMonthly;
 	
 	const data = [
@@ -17,14 +18,21 @@ const RunStatsTabDashboardMonth = (props) => {
 	]
 	const colors = ['#82ca9d', '#cacaca']
 	
+	const bars = keys.map((k) => { return {name: k, value: props.month[k] ? props.month[k].distance : 0} })
+	
  	return (
-		<div className="row">
-			<div className="col-md-5">
-				<h4>This Month <span className="ring">{ratio}%</span></h4>
-				<RunStatsTabDashboardPiechart data={data} colors={colors}/>
+		<div>
+			<div className="row">
+				<div className="col-md-5">
+					<h4>This Month <span className="ring">{ratio}%</span></h4>
+					<RunStatsTabDashboardPiechart data={data} colors={colors}/>
+				</div>
+				<div className="col-md-5">
+					<RunStatsTabDashboardValues val={val}/>
+				</div>
 			</div>
-			<div className="col-md-5">
-				<RunStatsTabDashboardValues val={val}/>
+			<div className="row">
+				<RunStatsTabDashboardBars data={bars}/>
 			</div>
 	  	</div>
   	);

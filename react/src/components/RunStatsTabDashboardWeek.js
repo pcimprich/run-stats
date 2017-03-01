@@ -2,13 +2,14 @@ var React = require('react');
 var moment = require('moment');
 var RunStatsTabDashboardPiechart = require('./RunStatsTabDashboardPiechart').Component;
 var RunStatsTabDashboardValues = require('./RunStatsTabDashboardValues').Component;
+var RunStatsTabDashboardBars = require('./RunStatsTabDashboardBars').Component;
 var conf = require('../../../config.json');
-var {currentPeriodValues} = require('../utils/auxiliary.js');
+var {currentPeriodValues, recentKeysW} = require('../utils/auxiliary.js');
 
 const RunStatsTabDashboardWeek = (props) => {
 	
-	const current = moment().year() + 'w' + moment().isoWeek();
-	const val = currentPeriodValues(props.week, current);
+	const keys = recentKeysW(10);
+	const val = currentPeriodValues(props.week, keys[0]);
 	const ratio = 100 * val.distance / conf.goalWeekly;
 	
 	const data = [
@@ -17,16 +18,23 @@ const RunStatsTabDashboardWeek = (props) => {
 	]
 	const colors = ['#82ca9d', '#cacaca']
 	
+	const bars = keys.map((k) => { return {name: k, value: props.week[k] ? props.week[k].distance : 0} })
+	
  	return (
-		<div className="row">
-			<div className="col-md-5">
-				<h4>This Week <span className="ring">{ratio}%</span></h4>
-				<RunStatsTabDashboardPiechart data={data} colors={colors}/>
+		<div>
+			<div className="row">
+				<div className="col-md-5">
+					<h4>This Week <span className="ring">{ratio}%</span></h4>
+					<RunStatsTabDashboardPiechart data={data} colors={colors}/>
+				</div>
+				<div className="col-md-5">
+					<RunStatsTabDashboardValues val={val}/>
+				</div>
+	  		</div>
+			<div className="row">
+				<RunStatsTabDashboardBars data={bars}/>
 			</div>
-			<div className="col-md-5">
-				<RunStatsTabDashboardValues val={val}/>
-			</div>
-	  	</div>
+		</div>
   	);
 }
 
