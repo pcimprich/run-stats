@@ -1,12 +1,18 @@
 var React = require('react');
-var {BarChart, Bar, XAxis} = require('recharts');
+var {BarChart, Bar, XAxis, Cell, Text} = require('recharts');
 
 const RunStatsTabDashboardBars = (props) => {
 	
  	return (
 		<BarChart width={400} height={150} data={props.data}>
 		<XAxis dataKey="value" axisLine={false} tickLine={false}/>
-        	<Bar dataKey='value' fill='#428bca'/>
+        	<Bar dataKey='value'>
+			{
+		      props.data.map((entry, index) => (
+		        <Cell key={`bar-${index}`} fill={index == 0 ? '#82ca9d' : '#428bca'}/>
+		      ))
+		    }
+			</Bar>
       	</BarChart>
   	);
 }

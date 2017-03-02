@@ -16,16 +16,15 @@ const RunStatsTabDashboardWeek = (props) => {
 		{name: 'Done', value: val.distance}, 
 		{name: 'TBD', value: conf.goalWeekly <= val.distance ? 0 : conf.goalWeekly - val.distance}
 	]
-	const colors = ['#82ca9d', '#cacaca']
 	
 	const bars = keys.map((k) => { return {name: k, value: props.week[k] ? props.week[k].distance : 0} })
 	
  	return (
 		<div>
 			<div className="row">
-				<div className="col-md-5">
+				<div className="col-md-7">
 					<h4>This Week <span className="ring">{ratio}%</span></h4>
-					<RunStatsTabDashboardPiechart data={data} colors={colors}/>
+					<RunStatsTabDashboardPiechart data={data}/>
 				</div>
 				<div className="col-md-5">
 					<RunStatsTabDashboardValues val={val}/>

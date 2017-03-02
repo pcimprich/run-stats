@@ -7,6 +7,13 @@ a {
   color: #428bca;
 }
 
+div.dashboard {
+	border-left: 1px solid #dadada;
+	margin-left: 15px;
+	padding-left: 50px;
+	padding-top: 20px;
+}
+
 div.pane {
 	padding: 6px 10px;
 	border-radius: 5px;
