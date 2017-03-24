@@ -1,4 +1,4 @@
-// Function for grouping runs by year, month, week
+// Function for grouping runs by total, year, month, week
 
 // internal functions
 
@@ -43,48 +43,31 @@ const _processItem = (acc, key, run) => {
 }
 
 const _postProcess = (acc) => {
-	for (item in acc) {
-		acc[item].duration = _secToHms(acc[item].duration);
-		acc[item].distance = Math.round(acc[item].distance);
-		acc[item].maxDistance = Math.round(acc[item].maxDistance * 10) / 10;
+	for (let grouping in acc) {
+		for (let item in acc[grouping]) {
+			acc[grouping][item].duration = _secToHms(acc[grouping][item].duration);
+			acc[grouping][item].distance = Math.round(acc[grouping][item].distance);
+			acc[grouping][item].maxDistance = Math.round(acc[grouping][item].maxDistance * 10) / 10;
+		}
 	}
 }
 
 // public functions
 
-const groupRunsByYear = (runs) => {
-	var acc = {};
+const groupRuns = (runs) => {
+	//console.time('groupRuns');
+	var acc = {week: {}, month: {}, year: {}, total: {}};
 
-	for (var i = 0; i < runs.length; i++)
-		_processItem(acc, runs[i].year, runs[i]);
-	
+	for (var i = 0; i < runs.length; i++) {
+		_processItem(acc.week, runs[i].year + 'w' + runs[i].week, runs[i]);
+		_processItem(acc.month, runs[i].year + 'm' + runs[i].month, runs[i]);
+		_processItem(acc.year, runs[i].year, runs[i]);
+		_processItem(acc.total, 'total', runs[i]);
+	}
 	_postProcess(acc);
 	
+	//console.timeEnd('groupRuns');
 	return acc;
 }
 
-const groupRunsByMonth = (runs) => {
-	var acc = {};
-
-	for (var i = 0; i < runs.length; i++)
-		_processItem(acc, runs[i].year + 'm' + runs[i].month, runs[i]);
-	
-	_postProcess(acc);
-	
-	return acc;
-}
-
-const groupRunsByWeek = (runs) => {
-	var acc = {};
-
-	for (var i = 0; i < runs.length; i++)
-		_processItem(acc, runs[i].year + 'w' + runs[i].week, runs[i]);
-	
-	_postProcess(acc);
-	
-	return acc;
-}
-
-module.exports.groupRunsByYear = groupRunsByYear;
-module.exports.groupRunsByMonth = groupRunsByMonth;
-module.exports.groupRunsByWeek = groupRunsByWeek;
+module.exports.groupRuns = groupRuns;

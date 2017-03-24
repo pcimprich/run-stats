@@ -17,10 +17,10 @@ class RunStatsTabDashboard extends React.Component {
 		return (
 			<div className="row tabContent">
   	  			<div className="col-md-5 dashboard">
-					<RunStatsTabDashboardWeek week={this.props.runs.groupedByWeek}/>
+					<RunStatsTabDashboardWeek week={this.props.runs.grouped.week}/>
 				</div>
   	  			<div className="col-md-5 dashboard">
-					<RunStatsTabDashboardMonth month={this.props.runs.groupedByMonth}/>
+					<RunStatsTabDashboardMonth month={this.props.runs.grouped.month}/>
 				</div>
 			</div>
   		);
