@@ -31,17 +31,11 @@ class RunStatsHeaderImport extends React.Component {
 				
 		const butonLabel = this.props.runs.newActivities ? 'Close and Reload' : 'Close';
 		
-		const tooltip = (
-		  <Tooltip id="tooltip-import">Import new activities from CSV</Tooltip>
-		);
-		
 		return (
 			<div>
-			 	<OverlayTrigger placement="bottom" overlay={tooltip}>
-					<Button bsStyle="default" bsSize="small" onClick={this.openImport}>
-						<i className="fa fa-upload fa-lg" aria-hidden="true"></i>
-					</Button>
-				</OverlayTrigger>
+				<Button bsStyle="default" bsSize="small" onClick={this.openImport}>
+					<i className="fa fa-upload fa-lg" aria-hidden="true"></i>
+				</Button>
 			
  		   		<Modal show={this.props.runs.showImportModal} onHide={this.closeImport} autoFocus>
           			<Modal.Header closeButton>
