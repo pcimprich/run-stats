@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RunStatsTabActivitiesFilter renders filters for activities 1`] = `
+<div>
+  <ul
+    className="nav nav-pills pull-left"
+    role={null}
+  >
+    <li
+      className=""
+      role="presentation"
+      style={undefined}
+    >
+      <a
+        href="#"
+        onClick={[Function]}
+        role="button"
+      >
+        2017
+      </a>
+    </li>
+    <li
+      className=""
+      role="presentation"
+      style={undefined}
+    >
+      <a
+        href="#"
+        onClick={[Function]}
+        role="button"
+      >
+        2016
+      </a>
+    </li>
+    <li
+      className=""
+      role="presentation"
+      style={undefined}
+    >
+      <a
+        href="#"
+        onClick={[Function]}
+        role="button"
+      >
+        2015
+      </a>
+    </li>
+    <li
+      className=""
+      role="presentation"
+      style={undefined}
+    >
+      <a
+        href="#"
+        onClick={[Function]}
+        role="button"
+      >
+        2014
+      </a>
+    </li>
+    <li
+      className=""
+      role="presentation"
+      style={undefined}
+    >
+      <a
+        href="#"
+        onClick={[Function]}
+        role="button"
+      >
+        10km+
+      </a>
+    </li>
+    <li
+      className=""
+      role="presentation"
+      style={undefined}
+    >
+      <a
+        href="#"
+        onClick={[Function]}
+        role="button"
+      >
+        15km+
+      </a>
+    </li>
+  </ul>
+  <div
+    className="pull-right bg-info pane"
+  >
+    145
+     activities
+  </div>
+</div>
+`;

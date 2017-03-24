@@ -6,6 +6,8 @@
     "start": "node ./bin/www",
     "test-reducers": "jasmine-node react/src/reducers",
     "test-api": "jasmine-node services",
+    "test-react": "jest react/src/components/__tests__/*",
+	"test-react-update": "jest -u react/src/components/__tests__/*",
     "apidoc": "apidoc -i services/ -o apidoc",
     "compile-jsx": "babel react/src --out-dir react/lib/ --ignore spec.js,test.js",
     "bundle-js": "browserify react/lib/index.js -d > public/javascripts/run-stats-bundle.js"
@@ -41,11 +43,14 @@
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
+    "babel-jest": "^19.0.0",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "grunt": "^1.0.1",
     "grunt-contrib-uglify": "^2.0.0",
     "grunt-run": "^0.6.0",
+    "jest": "^19.0.2",
+    "react-test-renderer": "^15.4.2",
     "redux-devtools": "^3.3.2"
   }
 }

@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RunStatsTabActivitiesList renders a list of activities 1`] = `
+<table
+  className="table table-striped"
+>
+  <thead>
+    <tr>
+      <th />
+      <th
+        className="right"
+      >
+        Date
+      </th>
+      <th
+        className="right"
+      >
+        Distance
+      </th>
+      <th
+        className="right"
+      >
+        Duration
+      </th>
+      <th
+        className="right"
+      >
+        Avg Pace
+      </th>
+      <th
+        className="right"
+      >
+        Elevation Gain
+      </th>
+      <th
+        className="right"
+      >
+        Energy
+      </th>
+      <th />
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <i
+          className="material-icons"
+        >
+          directions_run
+        </i>
+         
+        Radošovice
+      </td>
+      <td
+        className="right"
+      >
+        2017/02/21
+      </td>
+      <td
+        className="right"
+      >
+        10.47
+         km
+      </td>
+      <td
+        className="right"
+      >
+        1:06:09
+      </td>
+      <td
+        className="right"
+      >
+        06:19
+      </td>
+      <td
+        className="right"
+      >
+        151
+         m
+      </td>
+      <td
+        className="right"
+      >
+        1000
+         kcal
+      </td>
+      <td
+        className="right"
+      >
+        <i
+          className="material-icons"
+        >
+          watch
+        </i>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <i
+          className="material-icons"
+        >
+          directions_run
+        </i>
+         
+        Radošovice
+      </td>
+      <td
+        className="right"
+      >
+        2017/02/20
+      </td>
+      <td
+        className="right"
+      >
+        6.79
+         km
+      </td>
+      <td
+        className="right"
+      >
+        40:58
+      </td>
+      <td
+        className="right"
+      >
+        06:02
+      </td>
+      <td
+        className="right"
+      >
+        61
+         m
+      </td>
+      <td
+        className="right"
+      >
+        664
+         kcal
+      </td>
+      <td
+        className="right"
+      >
+        <i
+          className="material-icons"
+        >
+          watch
+        </i>
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

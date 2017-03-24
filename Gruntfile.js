@@ -35,7 +35,15 @@ module.exports = function(grunt) {
 		apiDoc: {
 		  cmd: 'npm',
 		  args: ['run', 'apidoc']
-		}
+		},
+		testReact: {
+		  cmd: 'npm',
+		  args: ['run', 'test-react']
+		},
+		updateReactSnaps: {
+		  cmd: 'npm',
+		  args: ['run', 'test-react-update']
+		},
 	  }
   });
 
@@ -49,7 +57,8 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['all']);
   grunt.registerTask('all', ['test', 'build', 'apidoc']);
   grunt.registerTask('build', ['run:compileJsx', 'run:bundleJs']);
-  grunt.registerTask('test', ['run:testApi', 'run:testReducers']);
+  grunt.registerTask('test', ['run:testApi', 'run:testReducers', 'run:testReact']);
   grunt.registerTask('apidoc', ['run:apiDoc']);
+  grunt.registerTask('update', ['run:updateReactSnaps']);
 
 };
