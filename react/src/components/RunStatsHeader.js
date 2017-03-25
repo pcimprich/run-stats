@@ -9,19 +9,17 @@ class RunStatsHeader extends React.Component {
   	}
 	
 	componentDidMount() {
-		this.props.dispatch(fetchTotal());
+		//this.props.dispatch(fetchTotal());
 	}
 	
  	render() {
-		const data = this.props.total.data;
-		
 		return (
 			<div>
 				<div className="pull-right controls">
 					<RunStatsHeaderImport />
 				</div>
 				<div className="bg-primary pane pull-right">
-					{data.count} activities, {data.distance} km
+					{this.props.total.count} activities, {this.props.total.distance} km
 				</div>
 			</div>
 		);
@@ -30,7 +28,7 @@ class RunStatsHeader extends React.Component {
 
 const mapStateToProps = (state) => {
 	return {
-		total: state.stats.total
+		total: state.runs.grouped.all.total
 	}
 }
 

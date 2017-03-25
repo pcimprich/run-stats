@@ -56,13 +56,13 @@ const _postProcess = (acc) => {
 
 const groupRuns = (runs) => {
 	//console.time('groupRuns');
-	var acc = {week: {}, month: {}, year: {}, total: {}};
+	var acc = {week: {}, month: {}, year: {}, all: {}};
 
 	for (var i = 0; i < runs.length; i++) {
 		_processItem(acc.week, runs[i].year + 'w' + runs[i].week, runs[i]);
 		_processItem(acc.month, runs[i].year + 'm' + runs[i].month, runs[i]);
 		_processItem(acc.year, runs[i].year, runs[i]);
-		_processItem(acc.total, 'total', runs[i]);
+		_processItem(acc.all, 'total', runs[i]);
 	}
 	_postProcess(acc);
 	

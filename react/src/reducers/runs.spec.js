@@ -23,7 +23,7 @@ describe("testing RUNS reducer", function() {
 	  	didInvalidate: false,
 	  	items: [],
 		filter: {key: 'yr:2017'},
-		grouped: {week: {}, month: {}, year: {}, total: {}},
+		grouped: {week: {}, month: {}, year: {}, all: { total: {}}},
 		isImporting: false,
 		newActivities: 0,
 		showImportModal :false
@@ -47,8 +47,8 @@ describe("testing RUNS reducer", function() {
 			year: {
 				'2017': {"count":2,"distance":18,"maxDistance":10.6,"duration":"01:21:08","kcal":1332,"elevation":256}
 			},
-			total: {
-			'total': {"count":2,"distance":18,"maxDistance":10.6,"duration":"01:21:08","kcal":1332,"elevation":256}
+			all: {
+				'total': {"count":2,"distance":18,"maxDistance":10.6,"duration":"01:21:08","kcal":1332,"elevation":256}
 			}
 		},
 		isImporting: false,

@@ -12,7 +12,7 @@ const initState = {
   	didInvalidate: false,
   	items: [],
 	filter: {key: 'yr:2017'},
-	grouped: {week: {}, month: {}, year: {}, total: {}},
+	grouped: {week: {}, month: {}, year: {}, all: { total: {}}},
 	isImporting: false,
 	newActivities: 0,
 	showImportModal: false

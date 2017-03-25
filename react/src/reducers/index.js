@@ -26,7 +26,7 @@
 				2016: { count: 145, distance: 1067, duration: "108:20:10", elevation: 15886, kcal: 96988, maxDistance: 21.1 },
 	 			...
 			},
-			total: { 
+			all: { 
 				total: { count: 445, distance: 3067, duration: "408:20:10", elevation: 35886, kcal: 426988, maxDistance: 21.1 }
 			},
 		},
