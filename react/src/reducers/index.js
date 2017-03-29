@@ -30,6 +30,7 @@
 				total: { count: 445, distance: 3067, duration: "408:20:10", elevation: 35886, kcal: 426988, maxDistance: 21.1 }
 			},
 		},
+		stats: 'week',
 		isImporting: false,
 		lastImported: 1239478406530,
 		newActivities: 0,
@@ -48,12 +49,11 @@
 var combineReducers = require('redux').combineReducers;
 var tab = require('./tab').reducer;
 var runs = require('./runs').reducer;
-var stats = require('./stats').reducer;
+//var stats = require('./stats').reducer;
 
 const reducer = combineReducers({
 	tab,
-  	runs,
-  	stats
+  	runs
 })
 
 module.exports.reducer = reducer;

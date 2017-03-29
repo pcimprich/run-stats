@@ -1,6 +1,6 @@
 var React = require('react');
 var connect = require('react-redux').connect;
-var fetchRuns = require('../actions/actions').fetchRuns;
+//var fetchRuns = require('../actions/actions').fetchRuns;
 var RunStatsTabActivitiesFilter = require('./RunStatsTabActivitiesFilter').Component;
 var RunStatsTabActivitiesList = require('./RunStatsTabActivitiesList').Component;
 

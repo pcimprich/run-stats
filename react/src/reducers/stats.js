@@ -1,3 +1,5 @@
+// this file is obsolete
+
 "use strict";
 
 const {REQUEST_TOTAL, RECEIVE_TOTAL_SUCCESS, 

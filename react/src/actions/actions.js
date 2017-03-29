@@ -8,15 +8,16 @@ const REQUEST_RUNS = 'REQUEST_RUNS';
 const RECEIVE_RUNS_SUCCESS = 'RECEIVE_RUNS_SUCCESS';
 const RECEIVE_RUNS_FAILURE = 'RECEIVE_RUNS_FAILURE';
 const INVALIDATE_RUNS = 'INVALIDATE_RUNS';
-const REQUEST_TOTAL = 'REQUEST_TOTAL';
-const RECEIVE_TOTAL_SUCCESS = 'RECEIVE_TOTAL_SUCCESS';
-const RECEIVE_TOTAL_FAILURE = 'RECEIVE_TOTAL_FAILURE';
+//const REQUEST_TOTAL = 'REQUEST_TOTAL';
+//const RECEIVE_TOTAL_SUCCESS = 'RECEIVE_TOTAL_SUCCESS';
+//const RECEIVE_TOTAL_FAILURE = 'RECEIVE_TOTAL_FAILURE';
 const SET_FILTER = 'SET_FILTER';
 const REQUEST_IMPORT = 'REQUEST_IMPORT';
 const RECEIVE_IMPORT_SUCCESS = 'RECEIVE_IMPORT_SUCCESS';
 const RECEIVE_IMPORT_FAILURE = 'RECEIVE_IMPORT_FAILURE';
 const OPEN_IMPORT_MODAL = 'OPEN_IMPORT_MODAL';
 const CLOSE_IMPORT_MODAL = 'CLOSE_IMPORT_MODAL';
+const SET_STATS = 'SET_STATS';
 
 // action creators
 
@@ -56,7 +57,7 @@ const fetchRuns = () => {
 			.catch( ex => dispatch(receiveRunsSuccess(ex)) );		     
 	}
 }
-
+/*
 const requestTotal = () => ({
     type: REQUEST_TOTAL,
 })
@@ -84,7 +85,7 @@ const fetchTotal = () => {
 			.catch( ex => dispatch(receiveTotalSuccess(ex)) );		     
 	}
 }
-
+*/
 const setFilter = (key) => ({
   	type: SET_FILTER,
   	key: key
@@ -126,36 +127,36 @@ const closeImportModal = () => ({
     type: CLOSE_IMPORT_MODAL,
 })
 
+const setStats = (key) => ({
+  	type: SET_STATS,
+  	key: key
+})
+
 module.exports = {
 	SET_TABS,
 	REQUEST_RUNS,
 	RECEIVE_RUNS_SUCCESS,
 	RECEIVE_RUNS_FAILURE,
 	INVALIDATE_RUNS,
-	REQUEST_TOTAL,
-	RECEIVE_TOTAL_SUCCESS,
-	RECEIVE_TOTAL_FAILURE,
 	SET_FILTER,
 	REQUEST_IMPORT,
 	RECEIVE_IMPORT_SUCCESS,
 	RECEIVE_IMPORT_FAILURE,
 	OPEN_IMPORT_MODAL,
 	CLOSE_IMPORT_MODAL,
+	SET_STATS,
 	setTabs,
 	requestRuns,
 	receiveRunsSuccess,
 	receiveRunsFailure,
 	invalidateRuns,
 	fetchRuns,
-	requestTotal,
-	receiveTotalSuccess,
-	receiveTotalFailure,
-	fetchTotal,
 	setFilter,
 	requestImport,
 	receiveImportSuccess,
 	receiveImportFailure,
 	runImport,
 	openImportModal,
-	closeImportModal
+	closeImportModal,
+	setStats
 }
