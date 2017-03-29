@@ -7,7 +7,7 @@
       	isFetching: true,
       	didInvalidate: false,
 	  	lastUpdated: 1439478405547,
-		filter: { key: 'yr.2017', count: 145 },
+		filter: { key: 'yr:2017', count: 145 },
       	items: [
         	{ id: 1, date: "2016-12-31", year: 2016, ... },
 			{ id: 2, date: "2016-12-22", year: 2016, ... }

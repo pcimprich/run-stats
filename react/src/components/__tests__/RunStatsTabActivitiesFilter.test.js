@@ -7,7 +7,7 @@ test('RunStatsTabActivitiesFilter renders filters for activities', () => {
       	isFetching: false,
       	didInvalidate: false,
 	  	lastUpdated: 1439478405547,
-		filter: { key: 'yr.2017', count: 145 },
+		filter: { key: 'yr:2017', count: 145 },
       	items: [
         	{"id":413,"date":"2017/02/21","year":2017,"month":2,"week":8,"time":"11:44:00","distance":10.47,"duration":"01:06:09","pace":"00:06:19","kcal":1000,"elevation":151,"cadence":79,"steps":10420,"location":"Radošovice","source":"Garmin","notes":null},
 			{"id":415,"date":"2017/02/20","year":2017,"month":2,"week":8,"time":"24:25:00","distance":6.79,"duration":"00:40:58","pace":"00:06:02","kcal":664,"elevation":61,"cadence":78,"steps":6380,"location":"Radošovice","source":"Garmin","notes":null}
@@ -36,6 +36,6 @@ test('RunStatsTabActivitiesFilter renders filters for activities', () => {
 		  <RunStatsTabActivitiesFilter runs={runs} dispatch={dispatch} />
   	);
   	let tree = component.toJSON();
-  	expect(tree).toMatchSnapshot();
+	expect(tree).toMatchSnapshot();
 });
 
