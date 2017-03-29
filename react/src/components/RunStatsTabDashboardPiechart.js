@@ -7,7 +7,7 @@ const RunStatsTabDashboardPiechart = (props) => {
 	
  	return (
 		<PieChart width={280} height={210}>
-			<Pie data={props.data} innerRadius={30} outerRadius={80} startAngle={180} endAngle={-180}>
+			<Pie data={props.data} innerRadius={30} outerRadius={90} startAngle={180} endAngle={-180}>
 				<Cell fill={colors[0]}/>
 				<Cell fill={colors[1]}/>
 			</Pie>

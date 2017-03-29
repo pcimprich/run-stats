@@ -8,7 +8,7 @@ var {currentPeriodValues, recentKeysM} = require('../utils/auxiliary.js');
 
 const RunStatsTabDashboardMonth = (props) => {
 	
-	const keys = recentKeysM(10);
+	const keys = recentKeysM(12);
 	const val = currentPeriodValues(props.month, keys[0]);
 	const ratio = 100 * val.distance / conf.goalMonthly;
 	

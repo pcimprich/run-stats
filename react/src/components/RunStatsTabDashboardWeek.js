@@ -8,7 +8,7 @@ var {currentPeriodValues, recentKeysW} = require('../utils/auxiliary.js');
 
 const RunStatsTabDashboardWeek = (props) => {
 	
-	const keys = recentKeysW(10);
+	const keys = recentKeysW(12);
 	const val = currentPeriodValues(props.week, keys[0]);
 	const ratio = 100 * val.distance / conf.goalWeekly;
 	
