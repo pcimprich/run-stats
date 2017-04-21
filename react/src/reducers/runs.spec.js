@@ -24,6 +24,7 @@ describe("testing RUNS reducer", function() {
 	  	items: [],
 		filter: {key: 'yr:2017'},
 		grouped: {week: {}, month: {}, year: {}, all: { total: {}}},
+		stats: 'week',
 		isImporting: false,
 		newActivities: 0,
 		showImportModal :false
@@ -51,6 +52,7 @@ describe("testing RUNS reducer", function() {
 				'total': {"count":2,"distance":18,"maxDistance":10.6,"duration":"01:21:08","kcal":1332,"elevation":256}
 			}
 		},
+		stats: 'week',
 		isImporting: false,
 		newActivities: 0,
 		showImportModal :false,

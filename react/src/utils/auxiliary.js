@@ -45,8 +45,29 @@ const recentKeysM = (l) => {
 	return keys;
 }
 
+const prettyPeriod = (period) => {
+	var pretty = period.replace('w', ', week ');
+	
+	return pretty.replace(/m\d+/, (match) => {
+		switch (match) {
+			case 'm1':  return ', January';
+		 	case 'm2':  return ', February';
+			case 'm3':  return ', March';
+			case 'm4':  return ', April';
+			case 'm5':  return ', May';
+			case 'm6': 	return ', June';
+			case 'm7': 	return ', July';
+			case 'm8': 	return ', August';
+			case 'm9': 	return ', September';
+			case 'm10': return ', October';
+			case 'm11': return ', November';
+			case 'm12': return ', December';
+		  	default: match;
+		}
+	});
+}
+
 module.exports.currentPeriodValues = currentPeriodValues;
 module.exports.recentKeysW = recentKeysW;
 module.exports.recentKeysM = recentKeysM;
-
-
+module.exports.prettyPeriod = prettyPeriod;

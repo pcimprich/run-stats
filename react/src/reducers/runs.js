@@ -5,7 +5,7 @@ var {groupRuns}  = require('../utils/grouping');
 
 const {REQUEST_RUNS, RECEIVE_RUNS_SUCCESS, RECEIVE_RUNS_FAILURE, INVALIDATE_RUNS, 
 	SET_FILTER, REQUEST_IMPORT, RECEIVE_IMPORT_SUCCESS, RECEIVE_IMPORT_FAILURE, 
-	OPEN_IMPORT_MODAL, CLOSE_IMPORT_MODAL} = require('../actions/actions');
+	OPEN_IMPORT_MODAL, CLOSE_IMPORT_MODAL, SET_STATS} = require('../actions/actions');
 
 const initState = {
   	isFetching: false,
@@ -13,6 +13,7 @@ const initState = {
   	items: [],
 	filter: {key: 'yr:2017'},
 	grouped: {week: {}, month: {}, year: {}, all: { total: {}}},
+	stats: 'week',
 	isImporting: false,
 	newActivities: 0,
 	showImportModal: false
@@ -73,6 +74,10 @@ const reducer = (state = initState, action) => {
 		case CLOSE_IMPORT_MODAL:
 			return Object.assign({}, state, {
 				showImportModal: false
+			})
+		case SET_STATS:
+			return Object.assign({}, state, {
+				stats: action.key
 			})
     	default:
 			return state
