@@ -4,6 +4,7 @@ var {Tabs, Tab} = require('react-bootstrap');
 var RunStatsTabDashboard = require('./RunStatsTabDashboard').Component;
 var RunStatsTabActivities = require('./RunStatsTabActivities').Component;
 var RunStatsTabStatistics = require('./RunStatsTabStatistics').Component;
+var RunStatsTabOverview = require('./RunStatsTabOverview').Component;
 var setTabs = require('../actions/actions').setTabs;
 
 class RunStatsTabs extends React.Component {
@@ -22,6 +23,9 @@ class RunStatsTabs extends React.Component {
 		  	</Tab>
           	<Tab eventKey="sta" title="Statistics">
 		       	<RunStatsTabStatistics />
+		  	</Tab>
+          	<Tab eventKey="ovw" title="Overview">
+		       	<RunStatsTabOverview />
 		  	</Tab>
        	</Tabs>
 	  );
