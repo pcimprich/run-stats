@@ -23,7 +23,7 @@ const RunStatsTabOverviewTable = (props) => {
   	        	</tr>
   		  	</thead>
   		  	<tbody>
-	  			{Object.keys(props.overview).map((year, index) => {
+	  			{Object.keys(props.overview).sort((a,b)=>(a < b ? 1 : -1)).map((year, index) => {
 					return (
 						<tr key={year}>
 							<td>{year}</td>

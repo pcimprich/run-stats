@@ -18,7 +18,7 @@ const RunStatsTabStatisticsList = (props) => {
   	        	</tr>
   		  	</thead>
   		  	<tbody>
-			  	{Object.keys(props.runs.grouped[props.runs.stats]).map((period, index) => {
+			  	{Object.keys(props.runs.grouped[props.runs.stats]).sort((a,b)=>(a < b ? 1 : -1)).map((period, index) => {
 					const data = props.runs.grouped[props.runs.stats][period];
 					var duration = data.duration.replace(/^00:/, '');
 					duration = duration.replace(/^0/, '');
