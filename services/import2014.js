@@ -6,20 +6,21 @@ var config = require('../config.json');
 const insertActivity = (act) => {
 	//console.log('insert: ', act);
 		
-	var dt = act[1].split(' ');
-	var date = dt[0];
+	var dt = act[3].split(' ');
+	var date = [dt[3], monthNumber(dt[2]), dt[1]].join('-');
 		
-	var tm = dt[1].split(':');
-	var time = tm[0] + ':' + tm[1];	
-	var duration = act[6].length > 5 ? act[6] : '0:' + act[6];
-	var pace = act[12].length > 4 ? act[12] : '0:' + act[12];
-	var loc = act[3].replace(/\sRunning/, '');
-	var kcal =  Number.parseInt(act[5].replace(/,/, ''), 10);
-	// n/a var steps =  Number.parseInt(act[10].replace(/,/, ''), 10);
-	
-	pool.query("INSERT INTO run (date, time, distance, duration, pace, kcal, elevation, cadence, location, source) " + 
-		"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
-		[date, time, act[4], duration, pace, kcal, act[14], act[10], loc, 'Garmin'], function(err, result) {
+	var tm = dt[4].split(':');
+	var time = dt[5] == 'PM' ? (Number.parseInt(tm[0], 10) + 12).toString() + ':' + tm[1] : dt[4];
+		
+	var duration = act[5].length > 5 ? act[5] : '0:' + act[5];
+	var pace = '0:' + act[6];
+	var loc = act[1].replace(/\sRunning/, '');
+	var kcal =  Number.parseInt(act[11].replace(/,/, ''), 10);
+	var steps =  Number.parseInt(act[10].replace(/,/, ''), 10);
+		
+	pool.query("INSERT INTO run (date, time, distance, duration, pace, kcal, elevation, cadence, steps, location, source) " + 
+		"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+		[date, time, act[4], duration, pace, kcal, act[8], act[9], steps, loc, 'Garmin'], function(err, result) {
 			if (err) {
 		 		console.error('error connecting: ' + err.stack);
 		  		throw err;
@@ -41,7 +42,6 @@ const processActivity = (act) => {
 	});
 }
 
-// not needed anymore
 const monthNumber = (month) => {
 	var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 	
@@ -51,8 +51,8 @@ const monthNumber = (month) => {
 }
 
 const dateAndDistanceFromActivity = (act) => {
-	var dt = act[1].split(' ');
-	return [dt[0], act[4]];
+	var dt = act[3].split(' ');
+	return [[dt[3], monthNumber(dt[2]), dt[1]].join('-'), act[4]];
 }
 
 const checkCountSql = (csv) => {
@@ -79,7 +79,7 @@ const importGarmin = (callback, test) => {
 			if (err) console.error('error parsing CSV: ' + err.stack);
 			//console.log(csv);
 			
-			var filteredCsv = csv.filter((line) => {return !line[0].match(/^Activity Type/)});
+			var filteredCsv = csv.filter((line) => {return line.length == 19 && !line[0].match(/Favorite/)});
 			//console.log('FILT: ', filteredCsv.length);
 	
 			pool.query(checkCountSql(filteredCsv), (err, rows) => {
@@ -90,18 +90,17 @@ const importGarmin = (callback, test) => {
 				
 				callback({newActivities: filteredCsv.length - rows[0].count});
 			});
-	
+			
 			// new activities inserted if not in TEST mode
 			if (!test) for (line of filteredCsv) processActivity(line);
 	  	})
 	});
 }
-
 /*
 const callback = (count) => {
 	console.log('FINAL: ', count);
 }
 
-importGarmin(callback, 0);
+importGarmin(callback, 1);
 */
 module.exports.importGarmin = importGarmin;
