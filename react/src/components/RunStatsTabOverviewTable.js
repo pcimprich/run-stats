@@ -27,15 +27,15 @@ const RunStatsTabOverviewTable = (props) => {
 					return (
 						<tr key={year}>
 							<td>{year}</td>
-							<td>{props.overview[year].m1}</td>
-							<td>{props.overview[year].m2}</td>
-							<td>{props.overview[year].m3}</td>
-							<td>{props.overview[year].m4}</td>
-							<td>{props.overview[year].m5}</td>
-							<td>{props.overview[year].m6}</td>
-							<td>{props.overview[year].m7}</td>
-							<td>{props.overview[year].m8}</td>
-							<td>{props.overview[year].m9}</td>
+							<td>{props.overview[year].m01}</td>
+							<td>{props.overview[year].m02}</td>
+							<td>{props.overview[year].m03}</td>
+							<td>{props.overview[year].m04}</td>
+							<td>{props.overview[year].m05}</td>
+							<td>{props.overview[year].m06}</td>
+							<td>{props.overview[year].m07}</td>
+							<td>{props.overview[year].m08}</td>
+							<td>{props.overview[year].m09}</td>
 							<td>{props.overview[year].m10}</td>
 							<td>{props.overview[year].m11}</td>
 							<td>{props.overview[year].m12}</td>

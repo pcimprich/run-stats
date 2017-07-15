@@ -1,6 +1,10 @@
 // Auxiliary function for components 
 var moment = require('moment');
 
+const leadingZero = (key) => {
+	return key < 10 ? '0' + key : key;
+}
+
 const currentPeriodValues = (data, key) => {
 	
 	var values = {
@@ -24,11 +28,11 @@ const currentPeriodValues = (data, key) => {
 const recentKeysW = (l) => {
 	
 	var now = moment();
-	var keys = [now.year() + 'w' + now.isoWeek()];
+	var keys = [now.year() + 'w' + leadingZero(now.isoWeek())];
 	
 	for (var i = 1; i < l; i++) {
 		now.subtract(1, 'w');
-		keys.push(now.year() + 'w' + now.isoWeek());
+		keys.push(now.year() + 'w' + leadingZero(now.isoWeek()));
 	}
 	return keys;
 }
@@ -36,11 +40,11 @@ const recentKeysW = (l) => {
 const recentKeysM = (l) => {
 	
 	var now = moment();
-	var keys = [now.year() + 'm' + (now.month()+1)];
+	var keys = [now.year() + 'm' + leadingZero(now.month()+1)];
 	
 	for (var i = 1; i < l; i++) {
 		now.subtract(1, 'M');
-		keys.push(now.year() + 'm' + (now.month()+1));
+		keys.push(now.year() + 'm' + leadingZero(now.month()+1));
 	}
 	return keys;
 }
@@ -50,15 +54,15 @@ const prettyPeriod = (period) => {
 	
 	return pretty.replace(/m\d+/, (match) => {
 		switch (match) {
-			case 'm1':  return ', January';
-		 	case 'm2':  return ', February';
-			case 'm3':  return ', March';
-			case 'm4':  return ', April';
-			case 'm5':  return ', May';
-			case 'm6': 	return ', June';
-			case 'm7': 	return ', July';
-			case 'm8': 	return ', August';
-			case 'm9': 	return ', September';
+			case 'm01': return ', January';
+		 	case 'm02': return ', February';
+			case 'm03': return ', March';
+			case 'm04': return ', April';
+			case 'm05': return ', May';
+			case 'm06': return ', June';
+			case 'm07': return ', July';
+			case 'm08': return ', August';
+			case 'm09': return ', September';
 			case 'm10': return ', October';
 			case 'm11': return ', November';
 			case 'm12': return ', December';
@@ -67,6 +71,8 @@ const prettyPeriod = (period) => {
 	});
 }
 
+
+module.exports.leadingZero = leadingZero;
 module.exports.currentPeriodValues = currentPeriodValues;
 module.exports.recentKeysW = recentKeysW;
 module.exports.recentKeysM = recentKeysM;
