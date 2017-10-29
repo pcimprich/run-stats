@@ -7,7 +7,7 @@
     "test-reducers": "jasmine-node react/src/reducers",
     "test-api": "jasmine-node services",
     "test-react": "jest react/src/components/__tests__/*",
-	"test-react-update": "jest -u react/src/components/__tests__/*",
+    "test-react-update": "jest -u react/src/components/__tests__/*",
     "apidoc": "apidoc -i services/ -o apidoc",
     "compile-jsx": "babel react/src --out-dir react/lib/ --ignore spec.js,test.js",
     "bundle-js": "browserify react/lib/index.js -d > public/javascripts/run-stats-bundle.js"

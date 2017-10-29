@@ -1,5 +1,5 @@
 // Function for grouping runs by total, year, month, week
-var {leadingZero} = require('./auxiliary.js');
+var {l0} = require('./auxiliary.js');
 
 // internal functions
 
@@ -60,8 +60,8 @@ const groupRuns = (runs) => {
 	var acc = {week: {}, month: {}, year: {}, all: {}};
 
 	for (var i = 0; i < runs.length; i++) {
-		_processItem(acc.week, runs[i].year + 'w' + leadingZero(runs[i].week), runs[i]);
-		_processItem(acc.month, runs[i].year + 'm' + leadingZero(runs[i].month), runs[i]);
+		_processItem(acc.week, runs[i].year + 'w' + l0(runs[i].week), runs[i]);
+		_processItem(acc.month, runs[i].year + 'm' + l0(runs[i].month), runs[i]);
 		_processItem(acc.year, runs[i].year, runs[i]);
 		_processItem(acc.all, 'total', runs[i]);
 	}

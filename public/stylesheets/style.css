@@ -4,7 +4,44 @@ body {
 }
 
 a {
-  color: #428bca;
+  	color: #428bca;
+}
+
+.qual100 {
+	background-color: forestgreen;
+	color: white;
+}
+
+.qual85 {
+	background-color: darkseagreen;
+}
+
+.qual70 {
+	background-color: yellowgreen;
+}
+
+.qual55 {
+	background-color: khaki;
+}
+
+.qual40 {
+	background-color: lightgoldenrodyellow;
+}
+
+.qual25 {
+	background-color: lightpink;
+}
+
+.qual-low {
+	background-color: lightcoral;
+}
+
+.qual-na {
+	background-color: white;
+}
+
+tr.steel th {
+	background-color: whitesmoke;
 }
 
 div.dashboard {

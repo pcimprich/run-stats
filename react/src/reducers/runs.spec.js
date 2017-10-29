@@ -39,11 +39,11 @@ describe("testing RUNS reducer", function() {
 		filter: {key: 'yr:2017', count: 2},
 		grouped: {
 			week: {
-				'2017w9': {"count":1,"distance":7,"maxDistance":7.2,"duration":"00:41:05","kcal":691,"elevation":140},
-				'2017w8': {"count":1,"distance":11,"maxDistance":10.6,"duration":"00:40:03","kcal":641,"elevation":116}
+				'2017w09': {"count":1,"distance":7,"maxDistance":7.2,"duration":"00:41:05","kcal":691,"elevation":140},
+				'2017w08': {"count":1,"distance":11,"maxDistance":10.6,"duration":"00:40:03","kcal":641,"elevation":116}
 			},
 			month: {
-				'2017m2': {"count":2,"distance":18,"maxDistance":10.6,"duration":"01:21:08","kcal":1332,"elevation":256}
+				'2017m02': {"count":2,"distance":18,"maxDistance":10.6,"duration":"01:21:08","kcal":1332,"elevation":256}
 			}, 
 			year: {
 				'2017': {"count":2,"distance":18,"maxDistance":10.6,"duration":"01:21:08","kcal":1332,"elevation":256}

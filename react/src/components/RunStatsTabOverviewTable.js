@@ -1,12 +1,12 @@
 var React = require('react');
-var prettyPeriod = require('../utils/auxiliary.js').prettyPeriod;
+var {prettyPeriod, qual} = require('../utils/auxiliary.js');
 
 const RunStatsTabOverviewTable = (props) => {
 
 	return (
-        <table className="table table-bordered">
+        <table className="table table-bordered table-condensed">
   		  	<thead>
-  	        	<tr>
+  	        	<tr className="steel">
 					<th></th>
   			  		<th>Jan</th>
 					<th>Feb</th>
@@ -27,18 +27,18 @@ const RunStatsTabOverviewTable = (props) => {
 					return (
 						<tr key={year}>
 							<td>{year}</td>
-							<td>{props.overview[year].m01}</td>
-							<td>{props.overview[year].m02}</td>
-							<td>{props.overview[year].m03}</td>
-							<td>{props.overview[year].m04}</td>
-							<td>{props.overview[year].m05}</td>
-							<td>{props.overview[year].m06}</td>
-							<td>{props.overview[year].m07}</td>
-							<td>{props.overview[year].m08}</td>
-							<td>{props.overview[year].m09}</td>
-							<td>{props.overview[year].m10}</td>
-							<td>{props.overview[year].m11}</td>
-							<td>{props.overview[year].m12}</td>
+						    <td className={qual(props.overview[year].m01, props.target)}>{props.overview[year].m01}</td>
+							<td className={qual(props.overview[year].m02, props.target)}>{props.overview[year].m02}</td>
+							<td className={qual(props.overview[year].m03, props.target)}>{props.overview[year].m03}</td>
+							<td className={qual(props.overview[year].m04, props.target)}>{props.overview[year].m04}</td>
+							<td className={qual(props.overview[year].m05, props.target)}>{props.overview[year].m05}</td>
+							<td className={qual(props.overview[year].m06, props.target)}>{props.overview[year].m06}</td>
+							<td className={qual(props.overview[year].m07, props.target)}>{props.overview[year].m07}</td>
+							<td className={qual(props.overview[year].m08, props.target)}>{props.overview[year].m08}</td>
+							<td className={qual(props.overview[year].m09, props.target)}>{props.overview[year].m09}</td>
+							<td className={qual(props.overview[year].m10, props.target)}>{props.overview[year].m10}</td>
+							<td className={qual(props.overview[year].m11, props.target)}>{props.overview[year].m11}</td>
+							<td className={qual(props.overview[year].m12, props.target)}>{props.overview[year].m12}</td>
 						</tr>
 					);
 				   }		
