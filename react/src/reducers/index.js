@@ -19,7 +19,7 @@
 	 			...
 			},
 			month: {
-				2017m1: { count: 14, distance: 95, duration: '16:50:49', kcal: 22023, elevation: 5357, maxDistance: 15.2 },
+				2017m01: { count: 14, distance: 95, duration: '16:50:49', kcal: 22023, elevation: 5357, maxDistance: 15.2 },
 	 			...
 			},
 			year: {
