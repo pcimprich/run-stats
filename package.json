@@ -10,7 +10,8 @@
     "test-react-update": "jest -u react/src/components/__tests__/*",
     "apidoc": "apidoc -i services/ -o apidoc",
     "compile-jsx": "babel react/src --out-dir react/lib/ --ignore spec.js,test.js",
-    "bundle-js": "browserify react/lib/index.js -d > public/javascripts/run-stats-bundle.js"
+    "bundle-js": "browserify react/lib/index.js -d > public/javascripts/run-stats-bundle.js",
+    "compile-less": "lessc public/stylesheets/styles.less public/stylesheets/styles.css"
   },
   "dependencies": {
     "body-parser": "^1.15.2",

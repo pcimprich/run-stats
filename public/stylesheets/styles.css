@@ -1,0 +1,71 @@
+body {
+  padding: 20px 40px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #428bca;
+}
+.qual100 {
+  background-color: #357935;
+  color: white;
+}
+.qual85 {
+  background-color: #449d44;
+  color: white;
+}
+.qual70 {
+  background-color: #5cb85c;
+}
+.qual55 {
+  background-color: #80c780;
+}
+.qual40 {
+  background-color: #a3d7a3;
+}
+.qual25 {
+  background-color: #c7e6c7;
+}
+.qual-low {
+  background-color: #eaf6ea;
+}
+.qual-na {
+  background-color: white;
+}
+tr.steel th {
+  background-color: whitesmoke;
+}
+div.dashboard {
+  border-left: 1px solid #dadada;
+  margin-left: 15px;
+  padding-left: 50px;
+  padding-top: 20px;
+}
+div.pane {
+  padding: 6px 10px;
+  border-radius: 5px;
+}
+.ring {
+  padding: 10px;
+  border-radius: 26px;
+  color: black;
+  background-color: #f0ad4e;
+}
+div.controls {
+  padding: 0px 5px;
+}
+div.tabContent {
+  padding: 15px 0px;
+}
+td.right,
+th.right {
+  text-align: right;
+}
+.large {
+  font-size: large;
+}
+.indent-top {
+  margin-top: 5px;
+}
+.indent-top2 {
+  margin-top: 15px;
+}
