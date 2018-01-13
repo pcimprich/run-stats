@@ -7,30 +7,23 @@ var RunStatsTabStatistics = require('./RunStatsTabStatistics').Component;
 var RunStatsTabOverview = require('./RunStatsTabOverview').Component;
 var setTabs = require('../actions/actions').setTabs;
 
-class RunStatsTabs extends React.Component {
-	constructor() {
-    	super();
-  	}
-	
-	render() {
-	  return (
- 	    <Tabs activeKey={this.props.tab} onSelect={this.props.onSelect} id="competition-tabs">
-        	<Tab eventKey="dsh" title="Dashboard">
-		    	<RunStatsTabDashboard />
-		  	</Tab>
-        	<Tab eventKey="act" title="Activities">
-		    	<RunStatsTabActivities />
-		  	</Tab>
-          	<Tab eventKey="sta" title="Statistics">
-		       	<RunStatsTabStatistics />
-		  	</Tab>
-          	<Tab eventKey="ovw" title="Overview">
-		       	<RunStatsTabOverview />
-		  	</Tab>
-       	</Tabs>
-	  );
-  	}
-}
+var RunStatsTabs = (props) => (
+
+	<Tabs activeKey={props.tab} onSelect={props.onSelect} id="competition-tabs">
+    	<Tab eventKey="dsh" title="Dashboard">
+			<RunStatsTabDashboard />
+		</Tab>
+       	<Tab eventKey="act" title="Activities">
+			<RunStatsTabActivities />
+		</Tab>
+        <Tab eventKey="sta" title="Statistics">
+		    <RunStatsTabStatistics />
+		</Tab>
+        <Tab eventKey="ovw" title="Overview">
+		    <RunStatsTabOverview />
+		</Tab>
+	</Tabs>
+)
 
 const mapStateToProps = (state) => {
 	return {
